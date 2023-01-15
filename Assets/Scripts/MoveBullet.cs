@@ -1,3 +1,9 @@
+/*Copyright (c) 2023, Classified39
+All rights reserved.
+
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree.*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,12 +34,15 @@ public class MoveBullet : MonoBehaviour
         string name = collision.gameObject.name;
         if (name == "InfantryUnitBlue(Clone)" || name == "InfantryUnitRed(Clone)" || name == "VehicleUnitBlue(Clone)" || name == "VehicleUnitRed(Clone)")
         {
-            if (isExplosive && collision.gameObject.GetComponent<Troop>().isInfantry){
-                for (int i = 0; i < 5; i++){
+            if (isExplosive && collision.gameObject.GetComponent<Troop>().isInfantry)
+            {
+                for (int i = 0; i < 5; i++)
+                {
                     collision.gameObject.GetComponent<Troop>().Hurt(damage, isPiercing);
                 }
             }
-            else{
+            else
+            {
                 collision.gameObject.GetComponent<Troop>().Hurt(damage, isPiercing);
             }
 
