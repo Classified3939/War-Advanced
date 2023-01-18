@@ -196,7 +196,7 @@ public class Troop : MonoBehaviour
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletExposive");
+                    return Resources.Load<GameObject>("Prefabs/BulletExplosive");
                 }
             }
             else
