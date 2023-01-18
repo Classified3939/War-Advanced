@@ -51,7 +51,7 @@ public class Troop : MonoBehaviour
         StartCoroutine(test());
     }
 
-    IEnumerator Fire(int partNumber, bool isPrimary)
+    IEnumerator Fire(int partNumber, bool isPrimary, int turnNumber)
     {
         int damage;
         if (isPrimary)
@@ -67,7 +67,7 @@ public class Troop : MonoBehaviour
         {
             for (int i = 0; i < settings.value.primary.shots; i++)
             {
-                ShootBullet(partNumber, damage, true);
+                ShootBullet(partNumber, damage, true, turnNumber);
                 yield return new WaitForSecondsRealtime(0.225f);
             }
         }
@@ -75,13 +75,13 @@ public class Troop : MonoBehaviour
         {
             for (int i = 0; i < settings.value.secondary.shots; i++)
             {
-                ShootBullet(partNumber, damage, false);
+                ShootBullet(partNumber, damage, false, turnNumber);
                 yield return new WaitForSecondsRealtime(0.225f);
             }
         }
     }
 
-    void ShootBullet(int index, int damage, bool isPrimary)
+    void ShootBullet(int index, int damage, bool isPrimary, int turnNumber)
     {
         if (troopParts[index].activeSelf)
         {
@@ -98,18 +98,20 @@ public class Troop : MonoBehaviour
 
             bool isPiercing;
             bool isExplosive;
+            bool isIncendiary;
             if (isPrimary)
             {
                 isPiercing = settings.value.primary.isPiercing;
                 isExplosive = settings.value.primary.isExplosive;
+                isIncendiary = settings.value.primary.isIncendiary;
             }
             else
             {
                 isPiercing = settings.value.secondary.isPiercing;
                 isExplosive = settings.value.secondary.isExplosive;
+                isIncendiary = settings.value.secondary.isIncendiary;
             }
-
-            bullet.GetComponent<MoveBullet>().setAttributes(targetVector, damage, isPiercing, isExplosive);
+            bullet.GetComponent<MoveBullet>().setAttributes(targetVector, damage, isPiercing, isExplosive, isIncendiary, turnNumber);
         }
     }
 
@@ -119,38 +121,94 @@ public class Troop : MonoBehaviour
         {
             if (settings.value.primary.isPiercing && settings.value.primary.isExplosive)
             {
-                return Resources.Load<GameObject>("Prefabs/BulletMega");
+                if (settings.value.primary.isIncendiary)
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletIncenMega");
+                }
+                else
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletMega");
+                }
             }
             else if (settings.value.primary.isPiercing)
             {
-                return Resources.Load<GameObject>("Prefabs/BulletPiercing");
+                if (settings.value.primary.isIncendiary)
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletIncenPiercing");
+                }
+                else
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletPiercing");
+                }
             }
             else if (settings.value.primary.isExplosive)
             {
-                return Resources.Load<GameObject>("Prefabs/BulletExplosive");
+                if (settings.value.primary.isIncendiary)
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletIncenExplosive");
+                }
+                else
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletExplosive");
+                }
             }
             else
             {
-                return Resources.Load<GameObject>("Prefabs/Bullet");
+                if (settings.value.primary.isIncendiary)
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletIncendiary");
+                }
+                else
+                {
+                    return Resources.Load<GameObject>("Prefabs/Bullet");
+                }
             }
         }
         else
         {
             if (settings.value.secondary.isPiercing && settings.value.secondary.isExplosive)
             {
-                return Resources.Load<GameObject>("Prefabs/BulletMega");
+                if (settings.value.secondary.isIncendiary)
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletIncenMega");
+                }
+                else
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletMega");
+                }
             }
             else if (settings.value.secondary.isPiercing)
             {
-                return Resources.Load<GameObject>("Prefabs/BulletPiercing");
+                if (settings.value.secondary.isIncendiary)
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletIncenPiercing");
+                }
+                else
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletPiercing");
+                }
             }
             else if (settings.value.secondary.isExplosive)
             {
-                return Resources.Load<GameObject>("Prefabs/BulletExplosive");
+                if (settings.value.secondary.isIncendiary)
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletIncenExplosive");
+                }
+                else
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletExposive");
+                }
             }
             else
             {
-                return Resources.Load<GameObject>("Prefabs/Bullet");
+                if (settings.value.secondary.isIncendiary)
+                {
+                    return Resources.Load<GameObject>("Prefabs/BulletIncendiary");
+                }
+                else
+                {
+                    return Resources.Load<GameObject>("Prefabs/Bullet");
+                }
             }
         }
     }
@@ -172,9 +230,13 @@ public class Troop : MonoBehaviour
         }
     }
 
-    public void Hurt(int damage, bool isPiercing)
+    public void Hurt(int damage, bool isPiercing, bool isIncendiary, int turnNumber)
     {
         int armor = settings.value.armor;
+        if (turnNumber < settings.value.primary.initiative && turnNumber < settings.value.secondary.initiative && !isIncendiary)
+        {
+            armor = armor + 1;
+        }
         switch (terrainSettings.value)
         {
             case 1:
@@ -196,9 +258,9 @@ public class Troop : MonoBehaviour
                 }
                 break;
         }
-        if (isPiercing)
+        if (isPiercing && !settings.value.isInfantry)
         {
-            armor -= 2;
+            damage *= 2;
         }
         if (damage > armor)
         {
@@ -211,25 +273,30 @@ public class Troop : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
             bool didFire = false;
-            if (i == settings.value.primary.initiative)
+
+            int primaryInitative = settings.value.primary.initiative;
+            if (settings.value.primary.isAssault) primaryInitative = (int)Math.Ceiling((double)primaryInitative / 2d);
+            if (i == primaryInitative)
             {
                 if (settings.value.isInfantry)
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        StartCoroutine(Fire(j, true));
+                        StartCoroutine(Fire(j, true, i));
                         didFire = true;
                     }
                 }
                 else
                 {
-                    StartCoroutine(Fire(3, true));
+                    StartCoroutine(Fire(3, true, i));
                     didFire = true;
                 }
             }
-            if (i == settings.value.secondary.initiative)
+            int secondaryInitative = settings.value.secondary.initiative;
+            if (settings.value.secondary.isAssault) secondaryInitative = (int)Math.Ceiling((double)secondaryInitative / 2d);
+            if (i == secondaryInitative)
             {
-                StartCoroutine(Fire(4, false));
+                StartCoroutine(Fire(4, false, i));
                 didFire = true;
             }
             if (didFire)
@@ -238,7 +305,7 @@ public class Troop : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSecondsRealtime(.125f);
+                yield return new WaitForSecondsRealtime(.2f);
             }
 
         }

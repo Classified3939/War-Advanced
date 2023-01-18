@@ -51,12 +51,14 @@ public class TeamSettings : MonoBehaviour
         UnityEngine.UI.Toggle[] effects = weaponPanel.GetComponentsInChildren<UnityEngine.UI.Toggle>();
         bool pierce = effects[0].isOn;
         bool explode = effects[1].isOn;
+        bool assault = effects[2].isOn;
+        bool incen = effects[3].isOn;
 
         TMPro.TMP_InputField[] inputs = weaponPanel.GetComponentsInChildren<TMPro.TMP_InputField>();
         Int32.TryParse(inputs[0].text, out int damage);
         Int32.TryParse(inputs[1].text, out int init);
         Int32.TryParse(inputs[2].text, out int shots);
 
-        return new WeaponSettings(pierce, explode, damage, init, shots);
+        return new WeaponSettings(pierce, explode, assault, incen, damage, init, shots);
     }
 }

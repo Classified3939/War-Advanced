@@ -11,10 +11,12 @@ using UnityEngine;
 
 public struct WeaponSettings
 {
-    public WeaponSettings(bool pierce = false, bool explode = false, int damage = 0, int init = 0, int shots = 0)
+    public WeaponSettings(bool pierce = false, bool explode = false, bool assault = false, bool incen = false, int damage = 0, int init = 0, int shots = 0)
     {
         this.isPiercing = pierce;
         this.isExplosive = explode;
+        this.isAssault = assault;
+        this.isIncendiary = incen;
         this.damage = damage;
         this.initiative = init;
         this.shots = shots;
@@ -22,6 +24,8 @@ public struct WeaponSettings
 
     public bool isPiercing { get; }
     public bool isExplosive { get; }
+    public bool isAssault { get; }
+    public bool isIncendiary { get; }
     public int damage { get; }
     public int initiative { get; }
     public int shots { get; }

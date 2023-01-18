@@ -14,13 +14,17 @@ public class MoveBullet : MonoBehaviour
     private int damage;
     private bool isPiercing;
     private bool isExplosive;
+    private bool isIncendiary;
+    private int turnNumber;
 
-    public void setAttributes(Vector2 target, int damage, bool isPiercing, bool isExplosive)
+    public void setAttributes(Vector2 target, int damage, bool isPiercing, bool isExplosive, bool isIncendiary, int turnNumber)
     {
         this.targetVector = target;
         this.damage = damage;
         this.isPiercing = isPiercing;
         this.isExplosive = isExplosive;
+        this.turnNumber = turnNumber;
+        this.isIncendiary = isIncendiary;
     }
 
     // Update is called once per frame
@@ -38,12 +42,12 @@ public class MoveBullet : MonoBehaviour
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    collision.gameObject.GetComponent<Troop>().Hurt(damage, isPiercing);
+                    collision.gameObject.GetComponent<Troop>().Hurt(damage, isPiercing, isIncendiary, turnNumber);
                 }
             }
             else
             {
-                collision.gameObject.GetComponent<Troop>().Hurt(damage, isPiercing);
+                collision.gameObject.GetComponent<Troop>().Hurt(damage, isPiercing, isIncendiary, turnNumber);
             }
 
             Destroy(gameObject);
