@@ -162,6 +162,11 @@ public class Troop : MonoBehaviour
             if (troopParts[i].activeSelf)
             {
                 troopParts[i].SetActive(false);
+                if (i == 4)
+                {
+                    GameObject controller = GameObject.Find("/GameController");
+                    controller.GetComponent<GameController>().TeamLoss(isDefending);
+                }
                 return;
             }
         }
@@ -233,9 +238,11 @@ public class Troop : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSecondsRealtime(.2f);
+                yield return new WaitForSecondsRealtime(.125f);
             }
 
         }
+        GameObject controller = GameObject.Find("/GameController");
+        controller.GetComponent<GameController>().TeamDraw();
     }
 }

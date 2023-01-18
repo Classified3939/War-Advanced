@@ -18,7 +18,7 @@ public class TroopSpawner : MonoBehaviour
     public GameObject infantryTemplate;
     public GameObject vehicleTemplate;
     private GameObject troopInstance;
-    // Start is called before the first frame update
+
     void Start()
     {
         if (settings.value.isInfantry)

@@ -467,7 +467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938128814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -8.9, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -487,10 +487,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: e8104ba8adcfacb48aa3660d480dbd0c, type: 2}
+  terrainSettings: {fileID: 11400000, guid: 75eb4dedff6c57244ae4a8abd5796a23, type: 2}
+  isDefending: 1
   spawnLocation: {x: -5, y: 0}
   enemyLocation: {x: 5, y: 0}
   infantryTemplate: {fileID: 763007017399585495, guid: 9077e61328386dd46b635f17a30dfb6c, type: 3}
   vehicleTemplate: {fileID: 3943246707042307990, guid: b4c8dfff0b6616249b00b272435a5731, type: 3}
+--- !u!1 &1468558021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1468558022}
+  - component: {fileID: 1468558023}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1468558022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468558021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8277214, y: -0.17266375, z: 0.025042865}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1468558023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468558021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb14168e93e6d445ac05d43799bef64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1850378234
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +615,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850378234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 8.9, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -589,6 +635,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 6e09db39e4393454aa8293174ef417eb, type: 2}
+  terrainSettings: {fileID: 11400000, guid: 75eb4dedff6c57244ae4a8abd5796a23, type: 2}
+  isDefending: 0
   spawnLocation: {x: 5, y: 0}
   enemyLocation: {x: -5, y: 0}
   infantryTemplate: {fileID: 7310829444073354514, guid: acb6fef814d276f4588fc91376a954a4, type: 3}
