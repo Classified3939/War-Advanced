@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000013828, y: -50.417}
+  m_AnchoredPosition: {x: 0.000013828, y: -44.91}
   m_SizeDelta: {x: 215.6787, y: 41.9593}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7873948
@@ -7964,7 +7964,7 @@ RectTransform:
   - {fileID: 125252154}
   - {fileID: 1109994128}
   m_Father: {fileID: 1364457360}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12696,7 +12696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197d8e14f0a47743a8234a8b76eac7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputPanel: {fileID: 0}
+  inputPanel: {fileID: 421353902}
   unitSettings: {fileID: 11400000, guid: 6e09db39e4393454aa8293174ef417eb, type: 2}
 --- !u!4 &826481781
 Transform:
@@ -13155,7 +13155,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1364457360}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14935,7 +14935,7 @@ RectTransform:
   m_Children:
   - {fileID: 372268300}
   m_Father: {fileID: 1364457360}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19865,10 +19865,10 @@ RectTransform:
   - {fileID: 1531313407}
   - {fileID: 1151309641}
   - {fileID: 982780504}
+  - {fileID: 421353901}
   - {fileID: 1000193696}
   - {fileID: 869025925}
   - {fileID: 1954486465}
-  - {fileID: 421353901}
   m_Father: {fileID: 764090861}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24221,7 +24221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 126}
+  m_AnchoredPosition: {x: 0, y: 131.51}
   m_SizeDelta: {x: 200, y: 41.9593}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1653407010
@@ -28075,7 +28075,7 @@ Transform:
   m_Children:
   - {fileID: 236029861}
   m_Father: {fileID: 1364457360}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1969924338
 GameObject:
