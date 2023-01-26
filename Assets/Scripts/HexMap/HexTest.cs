@@ -17,13 +17,13 @@ public class HexTest : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(0.5f, 0.5f);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             grid.SetValue(mousePosition, grid.GetValue(mousePosition) + 1);
         }
 
         if (Input.GetMouseButton(1))
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(0.5f, 0.5f);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (lastObjectSelected != null && lastObjectSelected != grid.getHexObject(mousePosition))
             {
                 Tuple<int, int> oldPosition = grid.getHexCoords(lastObjectSelected);

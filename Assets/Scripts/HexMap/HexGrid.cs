@@ -50,6 +50,7 @@ public class HexGrid
 
     private void GetXY(Vector3 worldPosition, out int x, out int y)
     {
+        worldPosition = worldPosition - new Vector3(0.5f * cellSize, 0.5f * cellSize);
         int roughX = Mathf.RoundToInt((worldPosition - origin).x / cellSize);
         int roughY = Mathf.RoundToInt((worldPosition - origin).y / cellSize / HEX_VERTICAL_OFFSET);
         bool oddRow = roughY % 2 == 1;
@@ -146,7 +147,7 @@ public class HexGrid
     {
         int x, y;
         GetXY(worldPosition, out x, out y);
-        if (x < 0 || y < 0 || x > width || y > height) return;
+        if (x < 0 || y < 0 || x >= width || y >= height) return;
         if (!selectedHexes[x, y])
         {
             selectedHexes[x, y] = true;
@@ -169,7 +170,7 @@ public class HexGrid
     {
         int x, y;
         GetXY(worldPosition, out x, out y);
-        if (x < 0 || y < 0 || x > width || y > height) return;
+        if (x < 0 || y < 0 || x >= width || y >= height) return;
         selectedHexes[x, y] = false;
         GameObject.Destroy(hexArray[x, y]);
         hexArray[x, y] = makeHexagon(null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, false);
@@ -177,7 +178,7 @@ public class HexGrid
 
     public void unselectHex(int x, int y)
     {
-        if (x < 0 || y < 0 || x > width || y > height) return;
+        if (x < 0 || y < 0 || x >= width || y >= height) return;
         selectedHexes[x, y] = false;
         GameObject.Destroy(hexArray[x, y]);
         hexArray[x, y] = makeHexagon(null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, false);
@@ -202,7 +203,7 @@ public class HexGrid
     {
         int x = coords.Item1;
         int y = coords.Item2;
-        if (x < 0 || y < 0 || x > width || y > height) return null;
+        if (x < 0 || y < 0 || x >= width || y >= height) return null;
         return hexArray[x, y];
     }
 
