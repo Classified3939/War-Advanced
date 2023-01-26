@@ -123,44 +123,44 @@ public class Troop : MonoBehaviour
             {
                 if (settings.value.primary.isIncendiary)
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletIncenMega");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletIncenMega");
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletMega");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletMega");
                 }
             }
             else if (settings.value.primary.isPiercing)
             {
                 if (settings.value.primary.isIncendiary)
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletIncenPiercing");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletIncenPiercing");
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletPiercing");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletPiercing");
                 }
             }
             else if (settings.value.primary.isExplosive)
             {
                 if (settings.value.primary.isIncendiary)
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletIncenExplosive");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletIncenExplosive");
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletExplosive");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletExplosive");
                 }
             }
             else
             {
                 if (settings.value.primary.isIncendiary)
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletIncendiary");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletIncendiary");
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/Bullet");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/Bullet");
                 }
             }
         }
@@ -170,44 +170,44 @@ public class Troop : MonoBehaviour
             {
                 if (settings.value.secondary.isIncendiary)
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletIncenMega");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletIncenMega");
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletMega");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletMega");
                 }
             }
             else if (settings.value.secondary.isPiercing)
             {
                 if (settings.value.secondary.isIncendiary)
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletIncenPiercing");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletIncenPiercing");
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletPiercing");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletPiercing");
                 }
             }
             else if (settings.value.secondary.isExplosive)
             {
                 if (settings.value.secondary.isIncendiary)
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletIncenExplosive");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletIncenExplosive");
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletExplosive");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletExplosive");
                 }
             }
             else
             {
                 if (settings.value.secondary.isIncendiary)
                 {
-                    return Resources.Load<GameObject>("Prefabs/BulletIncendiary");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/BulletIncendiary");
                 }
                 else
                 {
-                    return Resources.Load<GameObject>("Prefabs/Bullet");
+                    return Resources.Load<GameObject>("Prefabs/AutoBattler/Bullet");
                 }
             }
         }
